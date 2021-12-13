@@ -539,6 +539,10 @@ input::placeholder {
     }
 }
 
+.error .main {
+    overflow: hidden;
+}
+
 .error .main p {
     font-family: "Neue Haas Grotesk Display Pro 65 Medium", sans-serif;
     font-size: 8vmin;
