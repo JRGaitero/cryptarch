@@ -57,7 +57,27 @@ const handleResponse = response => {
                 slot.textContent = 'Power';
                 break;
         }
+        let damageIcon = document.createElement('img');
+        switch (response[key]['defaultDamageType']) {
+            case 1:
+                damageIcon.setAttribute('src', 'https://bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_3385a924fd3ccb92c343ade19f19a370.png');
+                break;
+            case 2:
+                damageIcon.setAttribute('src', 'https://bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_092d066688b879c807c3b460afdd61e6.png');
+                break;
+            case 3:
+                damageIcon.setAttribute('src', 'https://bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_2a1773e10968f2d088b97c22b22bba9e.png');
+                break;
+            case 4:
+                damageIcon.setAttribute('src', 'https://bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_ceb2f6197dccf3958bb31cc783eb97a0.png');
+                break;
+            case 6:
+                damageIcon.setAttribute('src', 'https://bungie.net/common/destiny2_content/icons/DestinyDamageTypeDefinition_530c4c3e7981dc2aefd24fd3293482bf.png');
+                break;
+        }
+        slot.appendChild(damageIcon);
         type.textContent = response[key]['itemTypeDisplayName'];
+
         categories.appendChild(rarity);
         categories.appendChild(slot);
         categories.appendChild(type);

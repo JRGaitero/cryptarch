@@ -199,13 +199,13 @@ input::placeholder {
     justify-content: space-between;
 }
 
-.weapons__weapon img:first-child {
+.weapons__weapon div>img:first-child {
     position: absolute;
     max-width: 10vmin;
     height: auto;
 }
 
-.weapons__weapon img:last-child {
+.weapons__weapon div>img:last-child {
     position: relative;
     max-width: 10vmin;
     height: auto;
@@ -236,6 +236,12 @@ input::placeholder {
     flex-grow: 1;
     font-family: "Neue Haas Grotesk Display Pro 55 Roman", sans-serif;
     font-size: 2vmin;
+}
+
+.weapons__weapon-categories img {
+    padding-left: 1vmin;
+    max-width: 1.8vmin;
+    height: auto;
 }
 
 .weapons__weapon-categories li {
