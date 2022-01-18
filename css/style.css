@@ -132,6 +132,8 @@ input::placeholder {
 /*----------weapon-list----------*/
 .weapon-list .main {
     background-image: url("../img/backgrounds/weapon-list-background.png");
+    background-attachment: fixed;
+    background-position: top;
 }
 
 .search {
@@ -197,7 +199,14 @@ input::placeholder {
     justify-content: space-between;
 }
 
-.weapons__weapon img {
+.weapons__weapon img:first-child {
+    position: absolute;
+    max-width: 10vmin;
+    height: auto;
+}
+
+.weapons__weapon img:last-child {
+    position: relative;
     max-width: 10vmin;
     height: auto;
 }
