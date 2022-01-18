@@ -1,5 +1,5 @@
 let apiKey;
-fetch('../x-api-key')
+fetch('x-api-key')
     .then(response => response.text())
     .then(response => apiKey = response);
 
