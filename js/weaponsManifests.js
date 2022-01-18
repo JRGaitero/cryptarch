@@ -1,3 +1,27 @@
+let apiKey;
+fetch('../x-api-key')
+    .then(response => response.text())
+    .then(response => apiKey = response);
+
+const getManifest = hash => {
+    let url = `https://www.bungie.net/Platform/Destiny2/Manifest/DestinyInventoryItemDefinition/${hash}/`;
+    fetch(url, {
+        headers: {
+            'x-api-key': apiKey
+        }
+    })
+        .then(handleError)
+        .then(response => response.json())
+        .then(manifestHandler)
+        .catch(error=>{
+            console.log(error)
+        })
+}
+
+const manifestHandler = response => {
+    /*TODO: json manifest handler */
+}
+
 const handleError = response => {
     if (!response.ok) {
         throw Error(response.status);
@@ -87,6 +111,12 @@ const handleResponse = response => {
 
         weapon.appendChild(iconFrame);
         weapon.appendChild(header);
+
+        let hash = key.replace('_', '');
+        weapon.addEventListener('click', e => {
+            e.preventDefault();
+            getManifest(hash);
+        });
 
         document.querySelector('.weapons').appendChild(weapon);
     })
