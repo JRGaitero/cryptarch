@@ -156,7 +156,7 @@ input::placeholder {
 }
 
 .search input[type=text] {
-    width: 19vmin;
+    width: 47vmin;
 }
 
 .search select {
@@ -887,7 +887,7 @@ input::placeholder {
             }
 
             .search input[type=text] {
-                width: 29.31vmin;
+                width: 57.31vmin;
             }
 
             .search select[name=wType] {

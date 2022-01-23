@@ -1,8 +1,10 @@
+// Get X-API-KEY from file
 let apiKey;
-fetch('x-api-key')
+fetch('js/x-api-key')
     .then(response => response.text())
     .then(response => apiKey = response);
 
+// Get individual weapon manifest
 const getManifest = hash => {
     let url = `https://www.bungie.net/Platform/Destiny2/Manifest/DestinyInventoryItemDefinition/${hash}/`;
     fetch(url, {
@@ -18,7 +20,9 @@ const getManifest = hash => {
         })
 }
 
+// Individual weapon manifest handler
 const manifestHandler = response => {
+    console.log(response);
     /*TODO: json manifest handler */
 }
 
@@ -30,6 +34,7 @@ const handleError = response => {
     }
 }
 
+// Weapon list manifest handler
 const handleResponse = response => {
     console.log(response)
     Object.keys(response).forEach(key => {
@@ -121,6 +126,8 @@ const handleResponse = response => {
         document.querySelector('.weapons').appendChild(weapon);
     })
 }
+
+// Load weapon list manifest
 fetch("js/data/data.json")
     .then(handleError)
     .then(response => response.json())
@@ -128,3 +135,32 @@ fetch("js/data/data.json")
     .catch(error=>{
         console.log(error)
     })
+
+//Filters
+document.querySelector('form.search').addEventListener('change', () => {
+    filters();
+});
+
+const filters = () => {
+    let weaponsLi = document.querySelectorAll('li.weapons__weapon');
+    weaponsLi.forEach(element => {
+        let filteredValues = [];
+        if (element.querySelector('h2').textContent.indexOf(document.forms['search']['wName'].value) !== -1) {
+            filteredValues.push(element.querySelector('h2').textContent);
+        }
+        if (element.querySelector('ul.weapons__weapon-categories li:first-child').textContent.startsWith(document.forms['search']['rarity'].value) === true){
+            filteredValues.push(element.querySelector('ul.weapons__weapon-categories li:first-child').textContent);
+        }
+        if (element.querySelector('ul.weapons__weapon-categories li:nth-child(2)').textContent.startsWith(document.forms['search']['slot'].value) === true){
+            filteredValues.push(element.querySelector('ul.weapons__weapon-categories li:nth-child(2)').textContent);
+        }
+        if (element.querySelector('ul.weapons__weapon-categories li:last-child').textContent.startsWith(document.forms['search']['wType'].value) === true){
+            filteredValues.push(element.querySelector('ul.weapons__weapon-categories li:last-child').textContent);
+        }
+        if (filteredValues.length !== 4) {
+            element.style.display = 'none';
+        } else {
+            element.style.display = '';
+        }
+    })
+}
