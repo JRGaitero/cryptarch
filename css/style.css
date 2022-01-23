@@ -61,7 +61,7 @@ input::placeholder {
     color: #cfcfcf;
 }
 
-.main {
+.main, .details-main {
     background-color: black;
     background-repeat: no-repeat;
     background-position: center;
@@ -596,17 +596,22 @@ input::placeholder {
     width: 100vmin;
 }
 
-.weapon-details .weapons__weapon {
+.details-main .weapons__weapon {
     border-bottom: none;
 }
 
-.weapon-details .weapons__weapon p {
+.details-main .weapons__weapon p {
     display: none;
 }
 
-.weapon-details .weapons__weapon-nameFlav {
+.details-main .weapons__weapon-nameFlav {
     justify-content: flex-start;
     padding-top: 2vmin;
+}
+
+.details>div:first-child {
+    align-self: flex-end;
+    font-size: 5vmin;
 }
 
 .flavorText {
